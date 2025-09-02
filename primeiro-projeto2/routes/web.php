@@ -1,9 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PrimeiraController;
 
-use App\Http\Controllers\PrimeiroController; 
+Route::get('/teste', [PrimeiraController::class, "teste"]);
 
-Router::get("\exercicio2",[PrimeiroController::Class,"exercicio2"]);
-Router::post("\exercicio2",[PrimeiroController::Class,"FromExercicio"]);
+Route::get('/exemplo', [PrimeiraController::class, "abrirForm"]);
+Route::post('/exemplo_resposta', [PrimeiraController::class, "resposta"]);
+
+Route::get("/exercicio2", [PrimeiraController::class, "exercicio2"]);
+Route::post("/resposta_exercicio2", [PrimeiraController::class, "respExercicio2"]);
+
+Router::get("\clientes",function() {return view ("cliente.index");});
 
