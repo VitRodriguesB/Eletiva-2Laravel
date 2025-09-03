@@ -8,4 +8,7 @@ class Cliente extends Model
 {
     protected $teble = "clientes";
     public $increment = true;
+
+    protected $fillable= ['nome', 'email'];
+
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cliente;
+use Illuminate\Support\Facades\Log;
 
 class ClienteController extends Controller
 {
@@ -11,7 +13,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $clientes = Cliente::all();
+        return view('clientes.index',compact("clientes"));
     }
 
     /**
@@ -19,7 +22,9 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view("clientes.create");
+
+
     }
 
     /**
@@ -27,7 +32,18 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            Cliente::create($request->all());
+            return redirect()->route("clientes.index")->with("sucesso","Registro inserido!");
+        } catch(\Exception $e){
+            Log::error("Erro ao salvar o registro do cliente! ".$e->getMessage(), [
+                'trace' => $e->getTraceAsString(),
+                'request' => $request->all()
+            ]);
+            return redirect()->route("clientes.index")->with("erro","Erro ao inserir");
+        }
+
+
     }
 
     /**

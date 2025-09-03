@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrimeiraController;
-use App\http\Controllers\ClienteController;
+use App\Http\Controllers\ClienteController;
 
 Route::resource('clientes', ClienteController::class);
 //Listar Clientes - GET / clientes -- Route::get('\clientes',[CienteController::class, 'index'])
