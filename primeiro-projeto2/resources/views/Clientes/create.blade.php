@@ -12,6 +12,14 @@
               <label for="email" class="form-label">Informe seu email</label>
               <input type="text" id="email" name="email" class="form-control" required="">
             </div>
+            <div class="mb-3">
+                <label for="categoria_id" class="form-label">Selecione a Categoria: </label>
+                <select class="form-select" nome="categoria_id" id="categoria_id">
+                  @foreach($categoria as $c)
+                    <option value="{{$c->id}}">{{$c->descricao }} </option>
+                  @endforeach
+                </select>
+            </div>
 <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 
